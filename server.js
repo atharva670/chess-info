@@ -8,7 +8,7 @@ app.use(express.static(__dirname));
 
 // Send the index.html file on the root route
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
+    res.sendFile(path.join(__dirname, "chess.html"));
 });
 
 // Set the port
