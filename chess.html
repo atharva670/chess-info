@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Kingdom</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f3f3;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            background-color: #333;
+            padding: 20px;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .piece-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .piece {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            color: white;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .piece:hover {
+            transform: scale(1.1);
+            background-color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">Welcome to Chess Kingdom</h1>
+        </header>
+
+        <section id="about" class="section">
+            <h2>About Chess</h2>
+            <p>Chess is a strategic board game that has been played for centuries. It involves two players moving pieces on a checkered board to capture the opponent's king.</p>
+        </section>
+
+        <section id="rules" class="section">
+            <h2>Basic Rules</h2>
+            <ul>
+                <li>The game is played on an 8x8 board, alternating between light and dark squares.</li>
+                <li>Each player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 knights, 2 bishops, and 8 pawns.</li>
+                <li>The objective is to checkmate the opponent’s king by placing it under an inescapable threat of capture.</li>
+                <li>Pawns can move forward one square but capture diagonally. On their first move, they can move forward two squares.</li>
+                <li>Rooks move horizontally or vertically any number of squares.</li>
+                <li>Knights move in an L-shape: two squares in one direction and then one perpendicular.</li>
+                <li>Bishops move diagonally any number of squares.</li>
+                <li>The queen moves horizontally, vertically, or diagonally any number of squares.</li>
+                <li>The king moves one square in any direction but cannot move into check.</li>
+                <li>Castling is a special move that allows the king and a rook to move simultaneously under specific conditions.</li>
+                <li>En passant is a special pawn capture that occurs under specific conditions.</li>
+                <li>If a player’s king is in check, they must make a move to remove the threat. If they cannot, it’s checkmate, and they lose the game.</li>
+            </ul>
+        </section>
+
+        <section id="pieces" class="section">
+            <h2>Chess Pieces</h2>
+            <div class="piece-container">
+                <div class="piece" id="king">King</div>
+                <div class="piece" id="queen">Queen</div>
+                <div class="piece" id="bishop">Bishop</div>
+                <div class="piece" id="knight">Knight</div>
+                <div class="piece" id="rook">Rook</div>
+                <div class="piece" id="pawn">Pawn</div>
+            </div>
+        </section>
+
+        <section id="history" class="section">
+            <h2>History of Chess</h2>
+            <p>Chess originated in India during the 6th century AD, known as "Chaturanga." It spread to Persia and later across the world, evolving into the modern game we know today.</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Chess Kingdom | All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const pieces = document.querySelectorAll(".piece");
+
+            pieces.forEach(piece => {
+                piece.addEventListener("mouseenter", () => {
+                    piece.style.transition = "transform 0.5s, background-color 0.5s";
+                    piece.style.transform = "rotate(360deg)";
+                    piece.style.backgroundColor = getRandomColor();
+                });
+
+                piece.addEventListener("mouseleave", () => {
+                    piece.style.transform = "rotate(0deg)";
+                    piece.style.backgroundColor = "#333";
+                });
+            });
+
+            function getRandomColor() {
+                const letters = "0123456789ABCDEF";
+                let color = "#";
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+        });
+    </script>
+</body>
+</html>
